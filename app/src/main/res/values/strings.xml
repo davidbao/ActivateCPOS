@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">现金自助系统激活</string>
+    <string name="information">消息</string>
+    <string name="ok">确定</string>
+    <string name="error">错误</string>
+    <string name="stationError">油站编码由8个数字组成，请正确输入</string>
+    <string name="installCodeError">安装码由4组5个数字组成，请正确输入</string>
+
+</resources>

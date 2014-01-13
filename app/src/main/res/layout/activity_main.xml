@@ -1,0 +1,130 @@
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/container"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="油站编码"
+                android:id="@+id/textView"
+                android:layout_column="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="5"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editTextId"
+                android:layout_column="2"
+                android:singleLine="true"
+                android:editable="false"
+                android:maxLength="8" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="安装码"
+                android:id="@+id/textView2"
+                android:layout_column="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="4"
+                android:id="@+id/editTextCode1"
+                android:layout_column="2"
+                android:maxLength="5"
+                android:autoText="false"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="4"
+                android:id="@+id/editTextCode2"
+                android:layout_column="6"
+                android:numeric="integer"
+                android:maxLength="5"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="4"
+                android:id="@+id/editTextCode3"
+                android:layout_column="7"
+                android:numeric="integer"
+                android:maxLength="5"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="4"
+                android:id="@+id/editTextCode4"
+                android:layout_column="8"
+                android:numeric="integer"
+                android:maxLength="5"
+                android:textSize="14dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="激活码"
+                android:id="@+id/textView3"
+                android:layout_column="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/editTextActivation"
+                android:layout_column="2"
+                android:layout_span="8"
+                android:textSize="14dp"
+                android:editable="false"
+                android:focusable="false"
+                android:enabled="false"
+                android:inputType="text" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="5"
+                android:text="激活"
+                android:id="@+id/button"
+                android:editable="false"
+                android:layout_column="2"
+                android:onClick="onActivate" />
+        </TableRow>
+
+    </TableLayout>
