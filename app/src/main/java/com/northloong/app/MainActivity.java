@@ -2,6 +2,7 @@ package com.northloong.app;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import android.os.Build;
 import android.widget.TextView;
 import android.text.*;
 import java.util.regex.*;
+import android.net.ConnectivityManager;
+import android.content.Context;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -112,6 +115,13 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
+        if(!isNetworkConnected(this))
+        {
+            // can not find the network connection, then return.
+            msbox(getString(R.string.error), getString(R.string.networkDisconnection));
+            return;
+        }
+
         TextView codeEditText = (TextView) findViewById(R.id.editTextActivation);
         codeEditText.setText("");
 
@@ -131,7 +141,7 @@ public class MainActivity extends ActionBarActivity {
         while(MainActivity._callResult.length() == 0)
         {
             count++;
-            if(count > 500)
+            if(count > 800)
                 break;
 
             try {
@@ -140,6 +150,11 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
+        if(MainActivity._callResult.length() == 0)
+        {
+            msbox(getString(R.string.error), getString(R.string.networkError));
+            return;
+        }
 
         // "欢迎使用CPOS，油站编码为32550387，激活码为29141-41562-32543-00571-47869"
         //MainActivity._callResult = "欢迎使用CPOS，油站编码为32550387，激活码为29141-41562-32543-00571-47869";
@@ -153,5 +168,17 @@ public class MainActivity extends ActionBarActivity {
         }
 
         msbox(getString(R.string.information), MainActivity._callResult);
+    }
+
+    private boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
     }
 }
