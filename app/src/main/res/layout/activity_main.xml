@@ -1,8 +1,13 @@
-    <TableLayout
+    <TableLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
         android:id="@+id/container"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:context=".MainActivity">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -11,22 +16,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="油站编码"
                 android:id="@+id/textView"
-                android:layout_column="1" />
+                android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="5"
+                android:layout_span="4"
                 android:inputType="number"
-                android:ems="10"
                 android:id="@+id/editTextId"
-                android:layout_column="2"
-                android:singleLine="true"
+                android:layout_column="1"
+                android:singleLine="false"
                 android:editable="false"
-                android:maxLength="8" />
+                android:maxLength="8"
+                android:textSize="14dp" />
 
         </TableRow>
 
@@ -37,54 +41,55 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+
                 android:text="安装码"
                 android:id="@+id/textView2"
-                android:layout_column="1" />
+                android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="4"
+                android:ems="@integer/installCode_ems"
                 android:id="@+id/editTextCode1"
-                android:layout_column="2"
+                android:layout_column="1"
                 android:maxLength="5"
                 android:autoText="false"
-                android:textSize="14dp" />
+                android:textSize="@dimen/installCode_TextSize"
+                android:text="88888" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="4"
+                android:ems="@integer/installCode_ems"
                 android:id="@+id/editTextCode2"
-                android:layout_column="6"
+                android:layout_column="2"
                 android:numeric="integer"
                 android:maxLength="5"
-                android:textSize="14dp" />
+                android:textSize="@dimen/installCode_TextSize" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="4"
+                android:ems="@integer/installCode_ems"
                 android:id="@+id/editTextCode3"
-                android:layout_column="7"
+                android:layout_column="3"
                 android:numeric="integer"
                 android:maxLength="5"
-                android:textSize="14dp" />
+                android:textSize="@dimen/installCode_TextSize" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:ems="4"
+                android:ems="@integer/installCode_ems"
                 android:id="@+id/editTextCode4"
-                android:layout_column="8"
+                android:layout_column="4"
                 android:numeric="integer"
                 android:maxLength="5"
-                android:textSize="14dp" />
+                android:textSize="@dimen/installCode_TextSize" />
         </TableRow>
 
         <TableRow
@@ -92,39 +97,40 @@
             android:layout_height="fill_parent">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="激活码"
                 android:id="@+id/textView3"
-                android:layout_column="1" />
+                android:layout_column="0" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextActivation"
-                android:layout_column="2"
+                android:layout_column="1"
                 android:layout_span="8"
                 android:textSize="14dp"
                 android:editable="false"
                 android:focusable="false"
-                android:enabled="false"
-                android:inputType="text" />
+                android:inputType="text"
+                android:singleLine="false" />
         </TableRow>
 
         <TableRow
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:baselineAligned="false">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_span="5"
                 android:text="激活"
                 android:id="@+id/button"
                 android:editable="false"
-                android:layout_column="2"
-                android:onClick="onActivate" />
+                android:layout_column="1"
+                android:onClick="onActivate"
+                android:singleLine="false"
+                android:layout_span="4" />
         </TableRow>
 
-    </TableLayout>
+    </TableLayout >
