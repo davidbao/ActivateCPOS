@@ -31,7 +31,7 @@
                 android:editable="false"
                 android:maxLength="8"
                 android:textSize="14dp"
-                android:selectAllOnFocus="false"
+                android:selectAllOnFocus="true"
                 android:gravity="center" />
 
         </TableRow>
@@ -58,7 +58,6 @@
                 android:maxLength="5"
                 android:autoText="false"
                 android:textSize="@dimen/installCode_TextSize"
-                android:text=""
                 android:selectAllOnFocus="true" />
 
             <EditText

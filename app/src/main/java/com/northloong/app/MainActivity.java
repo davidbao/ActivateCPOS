@@ -4,15 +4,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.TextView;
 import android.text.*;
 import java.util.regex.*;
@@ -35,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
 //        ((TextView) findViewById(R.id.editTextCode4)).setText("43816");
         //////////
 
-        TextView code1EditText = (TextView) findViewById(R.id.editTextCode1);
+        final TextView code1EditText = (TextView) findViewById(R.id.editTextCode1);
         TextView code2EditText = (TextView) findViewById(R.id.editTextCode2);
         TextView code3EditText = (TextView) findViewById(R.id.editTextCode3);
         TextView code4EditText = (TextView) findViewById(R.id.editTextCode4);
@@ -66,6 +60,25 @@ public class MainActivity extends ActionBarActivity {
                 }
             });
         }
+
+        TextView idEditText = (TextView) findViewById(R.id.editTextId);
+        idEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length() == 8)
+                {
+                    code1EditText.requestFocus();
+                }
+            }
+        });
     }
 
 
@@ -105,11 +118,8 @@ public class MainActivity extends ActionBarActivity {
         TextView code3EditText = (TextView) findViewById(R.id.editTextCode3);
         TextView code4EditText = (TextView) findViewById(R.id.editTextCode4);
         TextView[] codeViews = new TextView[]{code1EditText, code2EditText, code3EditText, code4EditText};
-        for(int i=0;i<codeViews.length;i++)
-        {
-            TextView codeView = codeViews[i];
-            if(codeView.length() < 5)
-            {
+        for (TextView codeView : codeViews) {
+            if (codeView.length() < 5) {
                 msbox(getString(R.string.error), getString(R.string.installCodeError));
                 return;
             }
