@@ -185,6 +185,15 @@ public class MainActivity extends ActionBarActivity {
             String code = m.group(1); // Access a submatch group; String can't do this.
             codeEditText.setText(code);
         }
+        else{
+            // Direct use of Pattern:
+            Pattern p2 = Pattern.compile("\\A(\\d{5}-\\d{5}-\\d{5}-\\d{5}-\\d{5})\\z");
+            Matcher m2 = p2.matcher(MainActivity._callResult);
+            if(m2.find()) { // Find each match in turn; String can't do this.
+                String code = m2.group(1); // Access a submatch group; String can't do this.
+                codeEditText.setText(code);
+            }
+        }
 
         msbox(getString(R.string.information), MainActivity._callResult);
     }
