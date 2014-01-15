@@ -1,5 +1,4 @@
 package com.northloong.app;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.NetworkInfo;
@@ -105,12 +104,22 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onActivate(View view) {
-        TextView idEditText = (TextView) findViewById(R.id.editTextId);
-        String idStr = idEditText.getText().toString();
-        if(idStr.length() < 8)
-        {
-            msbox(getString(R.string.error), getString(R.string.stationError));
-            return;
+
+        boolean ignoreStationId = _clickCount >= MaxClickCount;
+        _clickCount = 0;
+        _currentTime = 0;
+        String idStr = "";
+        if(!ignoreStationId){
+            TextView idEditText = (TextView) findViewById(R.id.editTextId);
+            idStr = idEditText.getText().toString();
+            if(idStr.length() < 8)
+            {
+                msbox(getString(R.string.error), getString(R.string.stationError));
+                return;
+            }
+        }
+        else{
+            idStr = "ignore_StationId";
         }
 
         TextView code1EditText = (TextView) findViewById(R.id.editTextCode1);
@@ -178,6 +187,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
         msbox(getString(R.string.information), MainActivity._callResult);
+    }
+
+    private long _currentTime = 0;  // unit: ms
+    private int _clickCount = 0;
+    private static final int MaxClickCount = 3;
+
+    public void onContainerClick(View view) {
+        long time = System.currentTimeMillis();
+        if(_currentTime == 0 || time - _currentTime < 1000){
+            _clickCount++;
+        }
+        else{
+            _clickCount = 0;
+        }
+        _currentTime = time;
+
+        if(_clickCount > MaxClickCount){
+            _clickCount = 0;
+            _currentTime = 0;
+        }
     }
 
     private boolean isNetworkConnected(Context context) {
